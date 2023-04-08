@@ -1,5 +1,4 @@
 import Nav from "./Nav";
-import './Navwrapper';
 
 function Navwrapper(props) {
     return (

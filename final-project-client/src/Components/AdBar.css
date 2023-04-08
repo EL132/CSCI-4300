@@ -1,0 +1,14 @@
+.ad-bar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #f5f5f5;
+padding: 10px;
+}
+
+.ad-bar-image {
+    height: 50px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}

@@ -1,9 +1,14 @@
+import AdBar from './AdBar';
+// import Greeting from './Test'
+
 function Homepage() {
     return (
         <div>
-            This is the homepage
+            <AdBar />
+            {/* <Greeting /> */}
+            <p>This is the homepage.</p>
         </div>
-    )
+    );
 }
 
 export default Homepage;

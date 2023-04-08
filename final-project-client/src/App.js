@@ -10,9 +10,9 @@ function App() {
     
     <Navwrapper>
       <Routes>
-      <Route path='/' exact element={<Homepage/>} />
-      <Route  path='/signin' element={<Signin/>}/>
-    </Routes>
+        <Route path='/' exact element={<Homepage/>} />
+        <Route path='/signin' element={<Signin/>}/>
+      </Routes>
     </Navwrapper>
     
     
