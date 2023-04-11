@@ -1,9 +1,11 @@
 
 import './App.css';
 import {Route, Routes} from 'react-router-dom';
-import Signin from './Components/Signin';
-import Homepage from './Components/Homepage';
-import Navwrapper from './Components/ui-components/Navwrapper';
+import Signin from './components/Signin';
+import Homepage from './components/Homepage';
+import Navwrapper from './components/ui-components/Navwrapper';
+import PostDiscoveryPage from './components/PostDiscoveryPage';
+
 
 function App() {
   return (
@@ -12,7 +14,7 @@ function App() {
       <Routes>
         <Route path='/' exact element={<Homepage/>} />
         <Route path='/signin' element={<Signin/>}/>
-        <Route path='/viewpost' element={<Viewpost/>}/>
+        <Route path='/viewPosts' element={<PostDiscoveryPage/>}/>
       </Routes>
     </Navwrapper>
     
