@@ -30,8 +30,9 @@ function PostDiscoveryPage () {
             </div>
             <div class="posts">
                 {/* 
-                    this is where we will have to use data that we have queiried from the backend
-                    to fill up all the title and author prop values  
+                    we will essentially loop through a list of posts that we have gotten from querying the backend
+                    and then for each post we will create a PostCard component and pass in the title and author
+                    as props; we will also have to pass in the text content as a prop and keep passing it down
                 */}
                 <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
                 <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
