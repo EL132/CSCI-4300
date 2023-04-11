@@ -1,0 +1,10 @@
+.image-logo {
+    width: 20vw;
+    height: 10vh;
+}
+
+.bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
