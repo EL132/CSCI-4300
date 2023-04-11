@@ -1,0 +1,9 @@
+.postcard-body {
+    height: 20vh;
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    width: 55vh;
+    background-color: grey;
+    font-size: 2vh;
+}
