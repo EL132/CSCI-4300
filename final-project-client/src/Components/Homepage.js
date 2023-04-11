@@ -1,11 +1,9 @@
-import AdBar from './AdBar';
-// import Greeting from './Test'
+import AdBar from './ui-components/AdBar';
 
 function Homepage() {
     return (
         <div>
             <AdBar />
-            {/* <Greeting /> */}
             <p>This is the homepage.</p>
         </div>
     );
