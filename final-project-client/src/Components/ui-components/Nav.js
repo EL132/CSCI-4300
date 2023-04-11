@@ -9,7 +9,7 @@ function Nav () {
                 <img class="logo" src='https://i.pinimg.com/564x/e6/38/21/e63821bc41308bbde13502542ad539e8.jpg' alt="Letter A logo"></img>    
             </Link>
             <div class="nav-bar-element">
-                <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>View posts</Link>
+                <Link style={{ textDecoration: 'none', color: 'white' }} to='/viewPosts'>View posts</Link>
             </div>
             <div class="nav-bar-element">
                 <Link style={{ textDecoration: 'none', color: 'white' }} to='/signin'>Sign in</Link>

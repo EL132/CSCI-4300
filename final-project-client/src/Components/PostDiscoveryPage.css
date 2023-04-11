@@ -1,0 +1,42 @@
+.discovery-page-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter {
+    background-color: blue;
+    display: flex;
+    height: 10vh;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.filter-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 5vh;
+    color: white;
+}
+
+.filter-title {
+    margin-right: 2vw;
+}
+
+input {
+    height: 5vh;
+    display: flex;
+    font-size: 4vh;
+}
+
+select {
+    height: 5vh;
+    font-size: 4vh;
+}
+
+.posts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
