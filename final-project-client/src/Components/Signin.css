@@ -1,0 +1,18 @@
+body {
+    --color-primary: #009579;
+    --color-primary-dark: #00674f;
+    --color-secondary: #f2f2f2;
+    --color-error: #ff0000;
+    --color-success: #ffffff;
+    --border-radius: 4px;
+
+
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-size: 18px;
+    
+
+
+}
