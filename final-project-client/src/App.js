@@ -1,9 +1,9 @@
 
 import './App.css';
 import {Route, Routes} from 'react-router-dom';
-import Signin from './components/Signin';
-import Homepage from './components/Homepage';
-import Navwrapper from './components/ui-components/Navwrapper';
+import Signin from './Components/Signin';
+import Homepage from './Components/Homepage';
+import Navwrapper from './Components/ui-components/Navwrapper';
 
 function App() {
   return (
