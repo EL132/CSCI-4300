@@ -5,7 +5,7 @@ import Signin from './components/Signin';
 import Homepage from './components/Homepage';
 import Navwrapper from './components/ui-components/Navwrapper';
 import PostDiscoveryPage from './components/PostDiscoveryPage';
-import Viewpost from './Components/Viewpost';
+import Viewpost from './components/Viewpost';
 
 
 function App() {
