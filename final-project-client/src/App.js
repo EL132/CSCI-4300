@@ -7,6 +7,7 @@ import PostDiscoveryPage from './components/PostDiscoveryPage';
 import CreatePost from './components/CreatePost';
 import Homepage from './components/Homepage';
 import Viewpost from './components/Viewpost';
+import Editpost from './components/Editpost';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/viewpost' element={<Viewpost/>}/>
         <Route path='/createPost' element={<CreatePost/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/editPost' element={<Editpost/>}/>
       </Routes>
     </Navwrapper>
     

@@ -11,6 +11,10 @@ function CreatePost() {
                 Content:
                 <textarea class="text-area"></textarea>
             </div>
+            <div class="create-post-content">
+                Add an image:
+                <input class="create-post-input" type='file'></input>
+            </div>
             <button class="create-post-button">Submit</button>
         </div>
     );

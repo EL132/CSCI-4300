@@ -12,15 +12,19 @@ function PostCard (props) {
     });
 
     return (
-        <div class="postcard-body">
-            <div class="title">
-                {props.title}
-            </div>
-            <div class="author">
-                By: {props.author}
-            </div>
-            <Link to='/viewpost' state={{ data: post }} >Go TO</Link>
+        <div>
+            <Link to='/viewpost' state={{ data: post }} style={{ textDecoration: 'none', color: 'white' }}>
+                <div class="postcard-body">
+                    <div class="title">
+                        {props.title}
+                    </div>
+                    <div class="author">
+                        By: {props.author}
+                    </div>                        
+                </div>
+            </Link>
         </div>
+        
     );
 }
 

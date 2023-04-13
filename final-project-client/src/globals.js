@@ -13,6 +13,8 @@ export function logIn(username) {
 export function logOut() {
     loggedIn = false;
     user = '';
+    // also want to reload the page so that the nav bar updates
+    window.location.reload();
 }
 
 export default user;
