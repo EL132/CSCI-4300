@@ -7,12 +7,12 @@ const port = process.env.PORT || 3000;
 
 const mongoose= require('mongoose');
 const cors = require('cors');
+const users = require('./routes/api/users');
 
 //Connect Database
 app.use(cors({ origin: true, credentials: true}));
-
-
 app.use(express.json({ extended: false}));
+app.use('/api/users', users);
 
 app.get("/", (req, res) => res.send('Hello World!'));
 app.get("/hi", (req, res) => res.send('hi'));
