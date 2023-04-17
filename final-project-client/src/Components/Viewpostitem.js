@@ -1,10 +1,10 @@
 import './Viewpostitem.css'
 function Viewpostitem(props) {
     return (
-        <div class='div'>
+        <div className='div'>
             <h1>{props.title}</h1>
             <br></br>
-            <p class='p'>{props.content}</p>
+            <p className='p'>{props.content}</p>
         </div>
     )
 

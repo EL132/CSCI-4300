@@ -9,7 +9,6 @@ import { isLoggedIn } from "../globals";
 function Viewpost(props) {
     const location = useLocation();
     const data = location.state?.data;
-    // we are going to have to query db for the post with the id to get the src for the image; const src = location.state?.src;
 
     if (isLoggedIn()) {
         const promptUser = () => {
@@ -19,7 +18,6 @@ function Viewpost(props) {
                 window.location.href = '/';
             }
         }
-
         const post = {
             title: data.title,
             content: data.content
@@ -27,18 +25,18 @@ function Viewpost(props) {
 
         return (
             <div>
-                <div class="buttons">
+                <div className="buttons">
                     <Link to='/editPost' state={{ data: post }} style={{ textDecoration: 'none', color: 'white' }}>
-                        <button class="viewpost-button">Edit</button>
+                        <button className="viewpost-button">Edit</button>
                     </Link>
-                    <button onClick={promptUser} class="viewpost-button">Delete</button>
+                    <button onClick={promptUser} className="viewpost-button">Delete</button>
                 </div>
                 
                 <Viewpostitem 
                     title={data.title}
                     content={data.content}
                 />
-                <img class='jaguar' src='https://cdn.britannica.com/20/77420-050-26F48228/Jaguar.jpg' alt='jaguar'></img>
+                <img className='jaguar' src={data.image} alt={data.title}></img>
             </div>
         )
     } else {
@@ -48,10 +46,12 @@ function Viewpost(props) {
                 title={data.title}
                 content={data.content}
                 />
-                <img class='jaguar' src='https://cdn.britannica.com/20/77420-050-26F48228/Jaguar.jpg' alt='jaguar'></img>
+                {
+                    //dont know why the image is not loading, I used the same link that was hard coded -> https://cdn.britannica.com/20/77420-050-26F48228/Jaguar.jpg
+                }
+                <img className='jaguar' src={data.image} alt={data.title}></img>
             </div>
         )
     }
 }
-
 export default Viewpost;

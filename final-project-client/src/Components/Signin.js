@@ -7,17 +7,17 @@ import { logOut } from '../globals';
 function Signin () {
     if (isLoggedIn()) {
         return (
-            <div class="sign-in-body">
+            <div className="sign-in-body">
                 <h1>You are already logged in!</h1>
-                <button onClick={logOut} class="sign-in-button">Logout</button>
+                <button onClick={logOut} className="sign-in-button">Logout</button>
             </div>
         )
     }
 
     return (
-        <div class="sign-in-body">
-            <h1 class="sign-in-header">Sign in</h1>
-            <div class="sign-in-username-container">
+        <div className="sign-in-body">
+            <h1 className="sign-in-header">Sign in</h1>
+            <div className="sign-in-username-container">
                 <h2>Username</h2>
                 <input type="text" class="sign-in-username-input" />
             </div>

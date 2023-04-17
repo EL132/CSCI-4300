@@ -7,8 +7,8 @@ function PostCard (props) {
     // we will use the author and title to display the title and author of the post in the postcard
     // we will use the description to pass it in as a prop for an individual event page component
     const [post] = useState({
-        title: 'Lorem ipsum',
-        content: 'Testing ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        title: props.title,
+        content: props.content
     });
 
     return (

@@ -1,24 +1,47 @@
+import { useEffect } from 'react';
 import './PostDiscoveryPage.css'
 import AdBar from './ui-components/AdBar';
-import PostCard from './ui-components/PostCard'
+import PostCard from './ui-components/PostCard';
+import axios from 'axios'
+import { useState } from 'react';
 
 function PostDiscoveryPage () {
+    const[isLoading, setIsLoading] = useState(true);
+    const [data, setdata] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/posts')
+        .then(response => {
+            if (response.data.length > 0) {
+                console.log(response.data)
+                setdata(response.data);
+                console.log(data);
+                setIsLoading(false);
+            }
+        })
+    }, []);
+    if (isLoading) {
+        return (
+            <div>loading</div>
+        );
+    } 
+    
     return (
-        <div class="dsicovery-page-body">
-            <div class="filter">
-                <div class="filter-box">
-                    <div class="filter-title">
+        <div className="dsicovery-page-body">
+            <div className="filter">
+                <div className="filter-box">
+                    <div className="filter-title">
                         Search:
                     </div>
-                    <div class="filter-input">
+                    <div className="filter-input">
                         <input type="text" placeholder="Search for a post"></input>
                     </div>
                 </div>
-                <div class="filter-box">
-                    <div class="filter-title">
+                <div className="filter-box">
+                    <div className="filter-title">
                         Genre:
                     </div>
-                    <div class="filter-input">
+                    <div className="filter-input">
                         <select>
                             <option value="all">All</option>
                             <option value="sports">Sports</option>
@@ -28,21 +51,16 @@ function PostDiscoveryPage () {
                     </div>
                 </div>
             </div>
-            <div class="posts">
-                {/* 
-                    we will essentially loop through a list of posts that we have gotten from querying the backend
-                    and then for each post we will create a PostCard component and pass in the title and author
-                    as props; we will also have to pass in the text content as a prop and keep passing it down
-                */}
-                <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
-                <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
-                <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
-                <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
-                <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
-                <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
-                <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
-                <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
-                <PostCard title="Berries and Diabetes: The Untold Story" author="Edna Pontellier"/>
+            <div className="posts">
+                {
+                    //need to change post model to say content instead of description
+                }
+                {
+                data.map(data => {
+                        return <PostCard title={data.title} author={data.author} content={data.description} image={data.image} />
+                    })}
+            
+            
             </div>
             <AdBar/>
         </div>
