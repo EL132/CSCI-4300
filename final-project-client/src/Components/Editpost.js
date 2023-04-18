@@ -11,7 +11,8 @@ function Viewpost() {
     const [content, setContent] = useState(data.content);
     const [image, setImage] = useState(data.image); 
 
-    const updatePost = () => {
+    const updatePost = (e) => {
+        e.preventDefault();
         // authenticate the user's input by making sure the input and textarea inputs aren't blank, and then update post
         const post = {
             title: title,
