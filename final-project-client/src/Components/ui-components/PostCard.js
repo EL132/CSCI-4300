@@ -8,7 +8,9 @@ function PostCard (props) {
     // we will use the description to pass it in as a prop for an individual event page component
     const [post] = useState({
         title: props.title,
-        content: props.content
+        content: props.content,
+        image: props.image,
+        id: props.id
     });
 
     return (
@@ -20,7 +22,7 @@ function PostCard (props) {
                     </div>
                     <div class="author">
                         By: {props.author}
-                    </div>                        
+                    </div>                       
                 </div>
             </Link>
         </div>

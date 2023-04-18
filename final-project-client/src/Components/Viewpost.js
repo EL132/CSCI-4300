@@ -4,23 +4,32 @@ import './Viewpost.css'
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { isLoggedIn } from "../globals";
+import axios from "axios";
 
 
 function Viewpost(props) {
     const location = useLocation();
     const data = location.state?.data;
 
+    function deleteHandler(id) {
+        const del = 'http://localhost:3000/api/posts/' + id;
+        axios.delete(del)
+        .then(res => console.log(res.data));
+    }
+
     if (isLoggedIn()) {
         const promptUser = () => {
             let answer = window.confirm('Are you sure you want to delete this post?');
             if (answer) {
-                // delete post
+                deleteHandler(data.id);
                 window.location.href = '/';
             }
         }
         const post = {
             title: data.title,
-            content: data.content
+            content: data.content,
+            id: data.id,
+            image: data.image
         }
 
         return (

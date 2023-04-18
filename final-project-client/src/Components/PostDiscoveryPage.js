@@ -57,7 +57,7 @@ function PostDiscoveryPage () {
                 }
                 {
                 data.map(data => {
-                        return <PostCard title={data.title} author={data.author} content={data.description} image={data.image} />
+                        return <PostCard title={data.title} author={data.author} content={data.description} image={data.image} id={data._id} />
                     })}
             
             
