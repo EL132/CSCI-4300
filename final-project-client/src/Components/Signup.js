@@ -26,7 +26,6 @@ const Signup = () => {
     const [matchFocus, setMatchFocus] = useState(false);
 
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
 
     // sets the focus state when the component loads 
     useEffect(() => {
@@ -54,6 +53,7 @@ const Signup = () => {
         console.log(user, pwd)
         // here we need to send the user and pwd to the server
         // so we need to set up another route for that in the server
+        // post request needed 
     }
 
 

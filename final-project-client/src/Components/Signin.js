@@ -31,6 +31,7 @@ const Login = () => {
         // if it is not, i need to set the error message to the error message from the server
         // maybe able to use mongoose to see if the combination is valid or not?
         // if valid, change the global loggedIn state to true
+        // get request needed
 
         return user;
     }
