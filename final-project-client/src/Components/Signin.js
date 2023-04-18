@@ -1,37 +1,130 @@
-import './Signin.css';
+import { useRef, useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './Signup.css';
 
-import { isLoggedIn } from '../globals';
-import { logOut } from '../globals';
+const LOGIN_URL = 'localhost:8080/login';
 
-function Signin () {
-    if (isLoggedIn()) {
-        return (
-            <div className="sign-in-body">
-                <h1>You are already logged in!</h1>
-                <button onClick={logOut} className="sign-in-button">Logout</button>
-            </div>
-        )
+const Login = () => {
+    const userRef = useRef();
+    const errRef = useRef();
+
+    const [user, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success] = useState(false);
+
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, pwd])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // i have user, pwd as the username and password from the form
+        // i need to send them to the server to check if that combination is valid
+        // if it is, i need to set success to true
+        // if it is not, i need to set the error message to the error message from the server
+        // maybe able to use mongoose to see if the combination is valid or not?
+        // if valid, change the global loggedIn state to true
+
+        return user;
     }
 
     return (
-        <div className="sign-in-body">
-            <h1 className="sign-in-header">Sign in</h1>
-            <div className="sign-in-username-container">
-                <h2>Username</h2>
-                <input type="text" class="sign-in-username-input" />
-            </div>
-            <div class="sign-in-password-container">
-                <h2>Password</h2>
-                <input type="password" class="sign-in-password-input" />
-            </div>
+        <>
+            {success ? (
+                <section>
+                    <h1>You are logged in!</h1>
+                    <br />
+                    <p>
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to='/'>Home</Link>
+                    </p>
+                </section>
+            ) : (
+                <section>
+                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} >{errMsg}</p>
+                    <h1>Sign In</h1>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setUser(e.target.value)}
+                            value={user}
+                            required
+                        />
 
-            <button class="sign-in-button">Submit</button>
-            <Link style={{ textDecoration: 'none', color: 'white' }} to='/signup'>
-                <button class="sign-in-button">Create Account</button>
-            </Link>
-        </div>
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            onChange={(e) => setPwd(e.target.value)}
+                            value={pwd}
+                            required
+                        />
+                        <button>Sign In</button>
+                    </form>
+                    <p>
+                        Need an Account?<br />
+                        <span className="line">
+                            <Link style={{ textDecoration: 'none', color: 'white' }} to='/signup'>Sign Up</Link>
+                        </span>
+                    </p>
+                </section>
+            )}
+        </>
     )
 }
 
-export default Signin;
+export default Login
+
+
+
+
+
+
+
+// import './Signin.css';
+// import { Link } from 'react-router-dom';
+
+// import { isLoggedIn } from '../globals';
+// import { logOut } from '../globals';
+
+// function Signin () {
+//     if (isLoggedIn()) {
+//         return (
+//             <div className="sign-in-body">
+//                 <h1>You are already logged in!</h1>
+//                 <button onClick={logOut} className="sign-in-button">Logout</button>
+//             </div>
+//         )
+//     }
+
+//     return (
+//         <div className="sign-in-body">
+//             <h1 className="sign-in-header">Sign in</h1>
+//             <div className="sign-in-username-container">
+//                 <h2>Username</h2>
+//                 <input type="text" class="sign-in-username-input" />
+//             </div>
+//             <div class="sign-in-password-container">
+//                 <h2>Password</h2>
+//                 <input type="password" class="sign-in-password-input" />
+//             </div>
+
+//             <button class="sign-in-button">Submit</button>
+//             <Link style={{ textDecoration: 'none', color: 'white' }} to='/signup'>
+//                 <button class="sign-in-button">Create Account</button>
+//             </Link>
+//         </div>
+//     )
+// }
+
+// export default Signin;
