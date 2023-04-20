@@ -1,8 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 // import axios from './api/axios';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from "axios";
-
+import setUserData from "../context/UserContext";
+import { Alert } from 'react-bootstrap';
 import './Signup.css';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -27,6 +28,9 @@ const Signup = () => {
 
     const [errMsg, setErrMsg] = useState('');
 
+    const [error, setError] = useState('');
+
+
     // sets the focus state when the component loads 
     useEffect(() => {
         userRef.current.focus();
@@ -50,10 +54,40 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user, pwd)
+        try {
+            const newUser = {
+                username: user,
+                password: pwd,
+            };
+
+            await axios.post("http://localhost:3000/api/users/signup", newUser);
+            const loginRes = await axios.post("http://localhost:3000/api/users/login", newUser);
+            setUserData({
+                token: loginRes.data.token,
+                user: loginRes.data.username,
+            });
+            localStorage.setItem("auth-token", loginRes.data.token);
+            Navigate('/');
+        } catch (err) {
+            err.response.data.msg && setError(err.response.data.msg);
+        }
+
+
+
+        /*
+        const user1 = {
+            username: user,
+            password: pwd,
+        };
+        axios.post('http://localhost:3000/api/users', user1)
+        .then(res => console.log(res.data));
+        console.log(user, pwd);
+        setUser('');
+        setPwd('');
         // here we need to send the user and pwd to the server
         // so we need to set up another route for that in the server
         // post request needed 
+        */
     }
 
 
@@ -61,6 +95,7 @@ const Signup = () => {
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>{errMsg}</p>
                     <h1>Register</h1>
+                    {error && <Alert variant="danger">{error}</Alert>}
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="username">
                             Username:

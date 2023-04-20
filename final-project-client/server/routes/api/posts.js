@@ -15,6 +15,7 @@ router.get('/:id', (req, res) => {
     .then((post) => res.json(post))
     .catch((err) => res.status(404).json({ nouserfound: 'No post found'}));
 });
+
 router.put('/:id', (req, res) => {
     Post.findByIdAndUpdate(req.params.id, req.body)
     .then((post) => res.json({ msg: 'Updated'}))
