@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './Signup.css';
+import setUserData from "../context/UserContext";
+import { Alert } from 'react-bootstrap';
 
 const LOGIN_URL = 'localhost:8080/login';
 
@@ -12,7 +14,9 @@ const Login = () => {
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [success] = useState(false);
+    const [success, setSucess] = useState(false);
+
+    const [error, setError] = useState('');
 
     useEffect(() => {
         userRef.current.focus();
@@ -24,6 +28,26 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        try {
+            const loginUser = { user, pwd };
+            const loginuser = {
+                username: user,
+                password: pwd,
+            }
+            const loginRes = await axios.post("http://localhost:3000/api/users/login", loginuser);
+            /*setUserData({
+                token: loginRes.data.token,
+                user: loginRes.data.username,
+            });*/
+            localStorage.setItem("auth-token", loginRes.data.token);
+            setSucess(true);
+            //Navigate('/');
+
+        } catch (err) {
+            //err.response.data.msg && setError(err.response.data.msg);
+            console.log(err);
+        }
 
         // i have user, pwd as the username and password from the form
         // i need to send them to the server to check if that combination is valid
@@ -48,7 +72,7 @@ const Login = () => {
                 </section>
             ) : (
                 <section>
-                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} >{errMsg}</p>
+                    <p  className={error ? "errmsg" : "offscreen"} >{error}</p>
                     <h1>Sign In</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="username">Username:</label>
