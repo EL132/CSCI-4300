@@ -9,7 +9,8 @@ function CreatePost() {
     //need to get current user
     const [author, setAuthor] = useState('Need to get current user');
 
-    function submitHandler() {
+    const submitHandler = (e) => {
+        e.preventDefault();
         const post = {
             title: title,
             author: author,
@@ -24,6 +25,7 @@ function CreatePost() {
         setContent('');
         setImage('');
         setAuthor('');
+        window.location.href = '/viewPosts'
     }
 
     return (
