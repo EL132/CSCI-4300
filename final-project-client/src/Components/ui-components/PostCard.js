@@ -13,20 +13,29 @@ function PostCard (props) {
         id: props.id
     });
 
-    return (
-        <div>
-            <Link to='/viewpost' state={{ data: post }} style={{ textDecoration: 'none', color: 'white' }}>
-                <div class="postcard-body">
-                    <div class="title">
-                        {props.title}
-                    </div>
-                    <div class="author">
-                        By: {props.author}
-                    </div>                       
+    return (        
+        <div class="card">
+            <Link to='/viewpost' state={{ data: post }} style={{ textDecoration: 'none', color: 'black' }}>
+                <div class="card-contents">
+                    <h1>{props.title}</h1>
+                    <pre>
+                        <p class="card-content multi-line-ellipses">{props.content}</p>
+                    </pre>
                 </div>
             </Link>
         </div>
-        
+        // <div>
+        //     <Link to='/viewpost' state={{ data: post }} style={{ textDecoration: 'none', color: 'white' }}>
+        //         <div class="postcard-body">
+        //             <div class="title">
+        //                 {props.title}
+        //             </div>
+        //             <div class="author">
+        //                 By: {props.author}
+        //             </div>                       
+        //         </div>
+        //     </Link>
+        // </div>
     );
 }
 

@@ -29,4 +29,6 @@
 .logo {
   height: 90px;
   margin-right: 50vw;
+  border-radius: 20%;
+  margin-left: 1vw;
 }

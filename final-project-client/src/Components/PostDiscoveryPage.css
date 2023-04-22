@@ -1,4 +1,23 @@
-.discovery-page-body {
+.posts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.discovery-page-header {
+    display: flex;
+    font-size: 8vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    background-color: black;
+    color: white;
+}
+
+
+/* .discovery-page-body {
     display: flex;
     flex-direction: column;
 }
@@ -39,4 +58,4 @@ select {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-}
+} */
