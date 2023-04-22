@@ -10,9 +10,11 @@ router.get('/', (req, res) => {
     .then((posts) => res.json(posts))
     .catch((err) => res.status(404).json({ nouserfound: 'No Posts found'}));
 });
-router.get('/:id', (req, res) => {
-    Post.findById(req.params.id)
-    .then((post) => res.json(post))
+router.get('/:search', (req, res) => {
+    const { title } = req.body;
+    console.log(title);
+    Post.find({ title: 'x' })
+    .then((posts) => res.json(posts))
     .catch((err) => res.status(404).json({ nouserfound: 'No post found'}));
 });
 

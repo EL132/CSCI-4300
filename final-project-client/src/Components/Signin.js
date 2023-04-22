@@ -5,6 +5,7 @@ import './Signup.css';
 import UserContext from "../context/UserContext";
 import { Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { logIn } from '../globals';
 
 const LOGIN_URL = 'localhost:8080/login';
 
@@ -43,6 +44,7 @@ const Login = () => {
             });*/
             localStorage.setItem("auth-token", loginRes.data.token);
             setSucess(true);
+            logIn('x');
             //Navigate('/');
 
         } catch (err) {
