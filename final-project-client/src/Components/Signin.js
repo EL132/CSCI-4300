@@ -2,8 +2,8 @@ import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 import './Signup.css';
-import setUserData from "../context/UserContext";
-import { Alert } from 'react-bootstrap';
+import UserContext from '../context/UserContext';
+import { useContext } from 'react';
 
 const LOGIN_URL = 'localhost:8080/login';
 
@@ -17,6 +17,8 @@ const Login = () => {
     const [success, setSucess] = useState(false);
 
     const [error, setError] = useState('');
+
+    const userCtx = useContext(UserContext);
 
     useEffect(() => {
         userRef.current.focus();
@@ -40,13 +42,15 @@ const Login = () => {
                 token: loginRes.data.token,
                 user: loginRes.data.username,
             });*/
-            localStorage.setItem("auth-token", loginRes.data.token);
+            //localStorage.setItem("auth-token", loginRes.data.token);
             setSucess(true);
+            userCtx.login(user);
             //Navigate('/');
 
         } catch (err) {
-            //err.response.data.msg && setError(err.response.data.msg);
             console.log(err);
+            err.response.data.msg && setError(err.response.data.msg);
+            
         }
 
         // i have user, pwd as the username and password from the form

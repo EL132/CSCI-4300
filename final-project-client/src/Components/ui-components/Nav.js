@@ -3,12 +3,16 @@ import {Link} from 'react-router-dom';
 import './Nav.css'
 import { isLoggedIn } from '../../globals';
 import user from '../../globals';
+import UserContext from '../../context/UserContext';
+import { useContext } from 'react';
 
 function Nav () {
     // let style = ''
     console.log(user)
 
-    if (isLoggedIn()) {
+    const userCtx = useContext(UserContext);
+
+    if (userCtx.loggedin) {
         // style = 'nav-bar logged-in'
 
         return (
@@ -26,7 +30,7 @@ function Nav () {
                         <Link style={{ textDecoration: 'none', color: 'white' }} to='/viewPosts'>View posts</Link>
                     </div>
                     <div class="nav-bar-element">
-                        <Link style={{ textDecoration: 'none', color: 'white' }} to='/signin'>Welcome, { user }</Link>
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to='/signin'>Welcome, { userCtx.username }</Link>
                     </div>
                 </div>
             </nav>
