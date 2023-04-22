@@ -24,7 +24,7 @@ function CreatePost() {
         setTitle('');
         setContent('');
         setImage('');
-        window.location.href = '/viewPosts'
+        // window.location.href = '/viewPosts'
     }
 
     return (

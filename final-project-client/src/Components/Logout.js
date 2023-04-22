@@ -10,7 +10,7 @@ const Logout = () => {
 
         userCtx.logout();
 
-        window.location.href = '/';
+        // window.location.href = '/';
     }
 
     return (

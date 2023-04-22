@@ -23,11 +23,11 @@ function Viewpost() {
         axios.put(`http://localhost:3000/api/posts/${data.id}`, post)
         .then(res => console.log(res.data));
 
-        //setTitle('');
-        //setContent('');
-        //setImage('');
+        setTitle('');
+        setContent('');
+        setImage('');
         alert('Post updated!');
-        window.location.href = '/';
+        // window.location.href = '/';
         // for some reason it redirects to a non-existent page 
     }
 

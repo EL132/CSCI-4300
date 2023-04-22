@@ -26,7 +26,6 @@ function Viewpost(props) {
             let answer = window.confirm('Are you sure you want to delete this post?');
             if (answer) {
                 deleteHandler(data.id);
-                window.location.href = '/';
             }
         }
         const post = {
