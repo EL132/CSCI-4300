@@ -10,6 +10,7 @@ import Viewpost from './components/Viewpost';
 import Editpost from './components/Editpost';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
+import Logout from './components/Logout';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/createPost' element={<CreatePost/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/editPost' element={<Editpost/>}/>
+        <Route path='/logout' element={<Logout/>}/>
       </Routes>
     </Navwrapper>
     

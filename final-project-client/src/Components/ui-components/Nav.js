@@ -30,7 +30,7 @@ function Nav () {
                         <Link style={{ textDecoration: 'none', color: 'white' }} to='/viewPosts'>View posts</Link>
                     </div>
                     <div class="nav-bar-element">
-                        <Link style={{ textDecoration: 'none', color: 'white' }} to='/signin'>Welcome, { userCtx.username }</Link>
+                        <Link style={{ textDecoration: 'none', color: 'white' }} to='/logout'>Welcome, { userCtx.username }</Link>
                     </div>
                 </div>
             </nav>
