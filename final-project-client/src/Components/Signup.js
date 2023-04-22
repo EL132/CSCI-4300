@@ -1,10 +1,14 @@
-import { useRef, useState, useEffect } from "react";
+
+import { useRef, useState, useEffect, useContext } from "react";
 import { Link, Navigate } from 'react-router-dom';
 import axios from "axios";
 import setUserData from "../context/UserContext";
 import { Alert } from 'react-bootstrap';
 import './Signup.css';
+
+import UserContext from "../context/UserContext";
 import { logIn } from "../globals";
+
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -29,6 +33,8 @@ const Signup = () => {
     const [errMsg, setErrMsg] = useState('');
 
     const [error, setError] = useState('');
+
+    const userCtx = useContext(UserContext);
 
 
     // sets the focus state when the component loads 
@@ -61,18 +67,22 @@ const Signup = () => {
             };
 
             await axios.post("http://localhost:3000/api/users/signup", newUser);
-            //const loginRes = await axios.post("http://localhost:3000/api/users/login", newUser);
+
+            const loginRes = await axios.post("http://localhost:3000/api/users/login", newUser);
+
             /*setUserData({
                 token: loginRes.data.token,
                 user: loginRes.data.username,
             });
             localStorage.setItem("auth-token", loginRes.data.token);*/
+
+            //Navigate('/');
+            userCtx.login(user);
             setUser('');
             setPwd('');
             setMatchPwd('');
-            setError('Signed Up!');
-            logIn(newUser.username);
-           // Navigate('/');
+            setError('');
+
         } catch (err) {
             console.log(err);
             err.response.data.msg && setError(err.response.data.msg);

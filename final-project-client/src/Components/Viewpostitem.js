@@ -4,6 +4,8 @@ function Viewpostitem(props) {
         <div className='div'>
             <h1>{props.title}</h1>
             <br></br>
+            <p className='p'>By: {props.author}</p>
+            <br></br>
             <p className='p'>{props.content}</p>
         </div>
     )

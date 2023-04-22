@@ -1,19 +1,19 @@
 import './CreatePost.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
+import UserContext from '../context/UserContext';
 
 function CreatePost() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [image, setImage] = useState('');
-    //need to get current user
-    const [author, setAuthor] = useState('Need to get current user');
+    const userCtx = useContext(UserContext);
 
     const submitHandler = (e) => {
         e.preventDefault();
         const post = {
             title: title,
-            author: author,
+            author: userCtx.username,
             description: content,
             image: image
         }
@@ -24,7 +24,6 @@ function CreatePost() {
         setTitle('');
         setContent('');
         setImage('');
-        setAuthor('');
         window.location.href = '/viewPosts'
     }
 
