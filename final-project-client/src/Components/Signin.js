@@ -2,8 +2,10 @@ import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 import './Signup.css';
-import setUserData from "../context/UserContext";
+import UserContext from "../context/UserContext";
 import { Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { logIn } from '../globals';
 
 const LOGIN_URL = 'localhost:8080/login';
 
@@ -42,11 +44,12 @@ const Login = () => {
             });*/
             localStorage.setItem("auth-token", loginRes.data.token);
             setSucess(true);
+            logIn('x');
             //Navigate('/');
 
         } catch (err) {
-            //err.response.data.msg && setError(err.response.data.msg);
             console.log(err);
+            err.response.data.msg && setError(err.response.data.msg);
         }
 
         // i have user, pwd as the username and password from the form
